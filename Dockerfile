@@ -1,4 +1,4 @@
 FROM maven:3.5-jdk-8-alpine
-WORKDIR .
-COPY . 
-RUN mvn install
+WORKDIR /app
+COPY . /app
+RUN cd docker-test && mvn install
