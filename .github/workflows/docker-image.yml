@@ -37,8 +37,6 @@ jobs:
         buildInfo.env.publisher.publishArtifacts: true
         buildInfo.env.publisher.publishBuildInfo: true
     - run: |
-        jf rt bce
-        jf rt bag
         jf rt bdc docker-local --image-file image-file-details
         jf rt bp
         jf bs --fail=false
@@ -46,8 +44,6 @@ jobs:
     - name: analyse with Xray
       run: |
        docker images
-       jd docker scan hts2.jfrog.io/docker-local/docker-test:${{ github.sha }}
-      
-        
-        jf rt bs --fail
+       jd docker scan hts2.jfrog.io/docker-local/docker-test:${{ github.sha }
+       jf rt bs --fail
         
