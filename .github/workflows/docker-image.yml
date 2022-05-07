@@ -25,7 +25,7 @@ jobs:
       with:
          context: docker-test
          push: true
-         tage: |
+         tags: |
             hts2-docker-local.jfrog.io/docker-local/docker-test:${{ github.sha }}
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
