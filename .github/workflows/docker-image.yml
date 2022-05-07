@@ -37,7 +37,8 @@ jobs:
         buildInfo.env.publisher.publishArtifacts: true
         buildInfo.env.publisher.publishBuildInfo: true
     - run: |
-        jf rt bdc docker-local --image-file=hts2.jfrog.io/artifactory/docker-local/docker-local/docker-test/
+        echo "hts2-docker-local.jfrog.io/docker-local/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
+        jf rt bdc docker-local --image-file image-file-details
         jf rt bp
         jf bs --fail=false
         echo "artifactory buil info gathering complete"
