@@ -43,7 +43,7 @@ jobs:
         echo "artifactory buil info gathering complete"
     - name: analyse with Xray
       run: |
-       docker images
-       jd docker scan hts2.jfrog.io/docker-local/docker-test:${{ github.sha }
-       jf rt bs --fail
+        docker images
+        jd docker scan hts2.jfrog.io/docker-local/docker-test:${{ github.sha }
+        jf rt bs --fail
         
