@@ -37,8 +37,8 @@ jobs:
         buildInfo.env.publisher.publishArtifacts: true
         buildInfo.env.publisher.publishBuildInfo: true
     - run: |
-        echo "clouddsein.jfrog.io/docker-local:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
-        jf rt bdc docker-local --image-file image-file-details
+        echo "clouddsein.jfrog.io/docker-local/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
+        jf rt bdc clouddsein.jfrog.io/docker-local/docker-local --image-file image-file-details
         jf rt bp
         jf bs --fail=false
         echo "artifactory buil info gathering complete"
