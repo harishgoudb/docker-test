@@ -37,7 +37,7 @@ jobs:
         JFROG_CLI_LOG_LEVEL=DEBUG
         echo "clouddsein.jfrog.io/docker-local/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
     - run: |
-        jf rt bdc docker-local --image-file image-file-details --url=clouddsein.jfrog.io/artifactory
+        jf rt bdc docker-local --image-file image-file-details
     - run: |     
         jf rt bp
     - run: |    
