@@ -39,7 +39,7 @@ jobs:
     - run: |
         echo "clouddsein.jfrog.io/docker-local/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
     - run: |
-        jf rt bdc docker-local --image-file image-file-details --url  --url=clouddsein.jfrog.io/artifactory
+        jf rt bdc docker-local --image-file image-file-details --url  --url=https://clouddsein.jfrog.io/artifactory
     - run: |     
         jf rt bp
     - run: |    
