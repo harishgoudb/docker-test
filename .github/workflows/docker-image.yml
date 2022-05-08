@@ -38,9 +38,13 @@ jobs:
         buildInfo.env.publisher.publishBuildInfo: true
     - run: |
         echo "clouddsein.jfrog.io/docker-local/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
+    - run: |
         jf rt bdc clouddsein.jfrog.io/docker-local/docker-local --image-file image-file-details
+    - run: |     
         jf rt bp
+    - run: |    
         jf bs --fail=false
+    - run: |    
         echo "artifactory buil info gathering complete"
     - name: analyse with Xray
       run: |
