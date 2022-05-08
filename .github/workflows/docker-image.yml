@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: build with maven
-      run: |
-        mvn -e -B package --file pom.xml -Dskiptests
     - name: Login to Artifactory
       uses: docker/login-action@v1
       with:
