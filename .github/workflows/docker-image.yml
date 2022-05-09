@@ -13,7 +13,7 @@ jobs:
     - name: Login to Artifactory
       uses: docker/login-action@v1
       with:
-        registry: hts1-docker-local.jfrog.io
+        registry: clouddsein.jfrog.io
         username: ${{ secrets.ARTIFACTORY_USERNAME }}
         password: ${{ secrets.ARTIFACTORY_TOKEN }}
     - name: Build and push
@@ -22,7 +22,7 @@ jobs:
       with:
          push: true
          tags: |
-            hts1-docker-local.jfrog.io/docker-test:${{ github.sha }}
+            clouddsein.jfrog.io/docker-local/docker-test:${{ github.sha }}
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
     - name: Setup JFrog CLI
@@ -35,7 +35,7 @@ jobs:
         buildInfo.env.publisher.publishBuildInfo: true
     - run: |
         JFROG_CLI_LOG_LEVEL=DEBUG
-        echo "hts1-docker-local.jfrog.io/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
+        echo "clouddsein.jfrog.io/docker-local/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
     - run: |
         jf rt bdc docker-local --image-file image-file-details
     - run: |     
@@ -47,5 +47,5 @@ jobs:
     - name: analyse with Xray
       run: |
         docker images
-        jd docker scan hts1-docker-local.jfrog.io/docker-test:${{ github.sha }}
+        jd docker scan clouddsein.jfrog.io/docker-local/docker-test:${{ github.sha }}
         jf rt bs --fail
