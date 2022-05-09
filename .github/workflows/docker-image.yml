@@ -30,7 +30,7 @@ jobs:
       # uses: jfrog/setup-jfrog-cli@128e747d1ab49209bace59204fee2ddb98fd05b1
       uses: jfrog/setup-jfrog-cli@v2.3.0
       env:
-        JF_ENV: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS }}
+        JF_ENV_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS }}
         buildInfo.env.publisher.publishArtifacts: true
         buildInfo.env.publisher.publishBuildInfo: true
     - run: |
