@@ -16,6 +16,8 @@ jobs:
         JF_ENV_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS }}
       with:
         registry: clouddsein.jfrog.io
+        username: ${{ secrets.ARTIFACTORY_USERNAME }}
+        password: ${{ secrets.ARTIFACTORY_TOKEN }}
     - name: Build and push
       id: docker_build
       uses: docker/build-push-action@v2
