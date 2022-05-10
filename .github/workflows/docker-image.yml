@@ -12,10 +12,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: Login to Artifactory
       uses: docker/login-action@v1
-      env:
-        JF_ENV_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS }}
       with:
-        registry: clouddsein.jfrog.io
+        registry: hts2-docker-local.jfrog.io
         username: ${{ secrets.ARTIFACTORY_USERNAME }}
         password: ${{ secrets.ARTIFACTORY_TOKEN }}
     - name: Build and push
