@@ -29,10 +29,10 @@ jobs:
       with: 
          version: 2.16.2
       env:
-        JF_ENV_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS }}
+        JF_ENV_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS_NEW }}
     - name: Run JFROG CLI
       env:
-        JF_ENV_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS }}
+        JF_ENV_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS_NEW }}
       run: |
         echo "hts2-docker-local.jfrog.io/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
         jf rt bp
