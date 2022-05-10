@@ -31,9 +31,11 @@ jobs:
       env:
         JF_ENV_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS }}
     - name: Run JFROG CLI
+      env:
+        JF_ENV_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS }}
       run: |
         echo "hts2-docker-local.jfrog.io/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
-        jf rt build-docker-create docker-local --username frogtester7 --password Frogtester@7 --image-file image-file-details 
+        jf rt build-docker-create docker-local --image-file image-file-details 
         jf rt bp
         jf bs --fail=false
         echo "artifactory buil info gathering complete"
