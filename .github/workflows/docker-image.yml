@@ -15,6 +15,7 @@ jobs:
          registry: hts2-docker-local.jfrog.io
          username: frogtester7
          password: ${{ secrets.ARTIFACTORY_TOKEN }}
+         logout: false
     - name: Build and push
       id: docker_build
       uses: docker/build-push-action@v2
