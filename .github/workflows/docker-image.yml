@@ -13,7 +13,7 @@ jobs:
     - name: Docker Login
       uses: docker/login-action@v2.0.0
       with:
-         registry: hts2-docker-local.jfrog.io
+         registry: clouddsein.jfrog.io
          username: frogtester9
          password: ${{ secrets.ARTIFACTORY_TOKEN }}
          logout: true
