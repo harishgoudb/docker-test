@@ -31,16 +31,9 @@ jobs:
          version: 2.16.2
       env:
         JF_ENV_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS_NEW }}
-    - name: Run JFROG CLI
-      env:
-        JF_ENV_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS_NEW }}
+    - name: Docker-build
       run: |
-        echo "hts2-docker-local.jfrog.io/docker-local/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
-        jf rt bp
-        jf bs --fail=false
-        echo "artifactory buil info gathering complete"
-    - name: analyse with Xray
-      run: |
-        docker images
-        jd docker scan hts2-docker-local.jfrog.io/docker-local/docker-test:${{ github.sha }}
-        jf rt bs --fail
+       echo "hts2-docker-local.jfrog.io/docker-local/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
+       jf rt bp
+       jf bs --fail=false
+       echo "artifactory buil info gathering complete"
