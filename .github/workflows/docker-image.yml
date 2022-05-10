@@ -13,7 +13,7 @@ jobs:
     - name: Docker Login
       uses: docker/login-action@v2.0.0
       with:
-         registry: clouddsein.jfrog.io
+         registry: hts1-docker-local.jfrog.io
          username: frogtester9
          password: Frogtster@9
          logout: true
