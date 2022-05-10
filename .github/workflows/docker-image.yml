@@ -26,22 +26,17 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
     - name: Setup JFrog CLI
-      # You may pin to the exact commit or the version.
-      # uses: jfrog/setup-jfrog-cli@128e747d1ab49209bace59204fee2ddb98fd05b1
-      uses: jfrog/setup-jfrog-cli@v2.3.0
+      uses: jfrog/setup-jfrog-cli@v2
+      with: 
+         version: 2.16.2
       env:
         JF_ENV_1: ${{ secrets.HARISH_CLI_GITHUB_ACTIONS_SAAS }}
-        buildInfo.env.publisher.publishArtifacts: true
-        buildInfo.env.publisher.publishBuildInfo: true
-    - run: |
+    - name: Run JFROG CLI
+      run: |
         echo "hts2-docker-local.jfrog.io/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
-    - run: |
         jf rt bdc docker-local --image-file image-file-details
-    - run: |     
         jf rt bp
-    - run: |    
         jf bs --fail=false
-    - run: |    
         echo "artifactory buil info gathering complete"
     - name: analyse with Xray
       run: |
