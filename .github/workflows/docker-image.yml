@@ -15,7 +15,7 @@ jobs:
       with:
          registry: clouddsein.jfrog.io
          username: frogtester9
-         password: ${{ secrets.ARTIFACTORY_TOKEN }}
+         password: Frogtster@9
          logout: true
     - name: Build and push
       id: docker_build
