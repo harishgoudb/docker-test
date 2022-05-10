@@ -33,7 +33,7 @@ jobs:
     - name: Run JFROG CLI
       run: |
         echo "hts2-docker-local.jfrog.io/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
-        jf rt build-docker-create hts2-docker-local.jfrog.io --image-file image-file-details 
+        jf rt build-docker-create docker-local --url hts2.jfrog.io --image-file image-file-details 
         jf rt bp
         jf bs --fail=false
         echo "artifactory buil info gathering complete"
