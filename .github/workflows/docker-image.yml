@@ -35,5 +35,4 @@ jobs:
       run: |
        echo "hts2-docker-local.jfrog.io/docker-local/docker-test:${{ github.sha }}@${{ steps.docker_build.outputs.digest }}" > image-file-details
        jf rt bp
-       jf bs --fail=false
        echo "artifactory buil info gathering complete"
